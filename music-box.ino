@@ -11,14 +11,14 @@ const int ledDPin = 9;
 
 const int soundPin = 13;
 
-int noteDur = 500; // ms per 1 beat
+int noteDur = 250; // ms per 1 beat
 
-long happyBirthday[50] = { 146.83, 0.75, 146.83, 0.25, 
-164.81, 1, 146.83, 1, 196.00, 1, 174.61, 2, 146.83, 0.75, 
-146.83, 0.25, 164.81, 1, 146.83, 1, 220.00, 1, 196.00, 2, 
-146.83, 0.75, 146.83, 0.25, 293.66, 1, 246.94, 1, 196.00, 
-1, 174.61, 1, 164.81, 1, 261.63, 0.75, 261.63, 0.25, 
-246.94, 1, 196.00, 1, 220.00, 1, 196.00, 3};
+long happyBirthday[50] = { 146.83, 1, 146.83, 1, 
+164.81, 2, 146.83, 2, 196.00, 2, 174.61, 4, 146.83, 1, 
+146.83, 1, 164.81, 2, 146.83, 2, 220.00, 2, 196.00, 4, 
+146.83, 1, 146.83, 1, 293.66, 2, 246.94, 2, 196.00, 
+2, 174.61, 2, 164.81, 2, 261.63, 1, 261.63, 1, 
+246.94, 2, 196.00, 2, 220.00, 2, 196.00, 4};
 
 void setup() {
   pinMode(switchAPin, INPUT);
@@ -47,9 +47,17 @@ void playTune(long tune[], int len) {
   for (int i = 0; i < len; i += 2) {
     int freq = int(tune[i]);
     long dur = tune[i+1]*noteDur;
+
+    Serial.print("freq: ");
+    Serial.print(freq);
+    Serial.print(" dur: ");
+    Serial.print(dur);
+    Serial.println();
+    
     tone(soundPin, freq, dur);
     delay(dur);
+    noTone(soundPin);
+    delay(50);
   }
-  noTone(soundPin);
 }
 
