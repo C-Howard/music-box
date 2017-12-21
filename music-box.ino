@@ -90,13 +90,6 @@ void playTune(long tune[], int len) {
   for (int i = 0; i < len; i += 2) {
     int freq = int(tune[i]);
     long dur = tune[i+1]*noteDur;
-
-    Serial.print("freq: ");
-    Serial.print(freq);
-    Serial.print(" dur: ");
-    Serial.print(dur);
-    Serial.println();
-    
     tone(soundPin, freq, dur);
     delay(dur);
     noTone(soundPin);
