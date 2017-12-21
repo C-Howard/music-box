@@ -26,11 +26,10 @@ void setup() {
 }
 
 void loop() {
-  if (switchAPin == HIGH) {
+  if (digitalRead(switchAPin) == HIGH) {
     digitalWrite(ledAPin, HIGH);
     playTune(happyBirthday(), 50);
     digitalWrite(ledAPin, LOW);
-    noTone(soundPin);
   }
 }
 
@@ -44,6 +43,7 @@ void playTune(long tune[], int len) {
     tone(soundPin, freq, dur);
     delay(dur);
   }
+  noTone(soundPin);
 }
 
 // Returns array containing happy birthday, encoded.
@@ -80,8 +80,5 @@ long happyBirthday() {
   };
   return hbd;
 }
-
-
-
 
 
