@@ -26,7 +26,25 @@ int smokeOnWaterLen = 28;
 long smokeOnWater[28] = {
   49.00, 2, 58.27, 2, 65.41, 2, 0, 1, 49.00, 1, 0, 1, 
   58.27, 2, 69.30, 1, 65.41, 4, 49.00, 2, 58.27, 2,
-  65.41, 3, 58.27, 2, 49.00, 7};
+  65.41, 3, 58.27, 2, 49.00, 7
+};
+
+int thousandMilesLen = 88;
+long thousandMiles[88] = {
+   987.77, 1, 493.88, 1, 987.77, 1, 932.33, 1, 493.88, 1, 
+   932.33, 1, 739.99, 6, 622.25, 2, 554.37, 1, 493.88, 1,
+
+   987.77, 1, 493.88, 1, 987.77, 1, 932.33, 1, 
+   493.88, 1, 932.33, 1, 739.99, 1, 987.77, 1, 
+   739.99, 1, 493.88, 1, 739.99, 1, 493.88, 1,
+   622.25, 1, 659.25, 1, 622.25, 1, 493.88, 1,
+
+   987.77, 1, 493.88, 1, 987.77, 1, 932.33, 1, 493.88, 1, 
+   932.33, 1, 739.99, 6, 622.25, 2, 554.37, 1, 493.88, 1,
+   
+   622.25, 1, 554.37, 1, 493.88, 1, 622.25, 1,
+   554.37, 1, 493.88, 1, 739.99, 6, 554.37, 4
+};
 
 void setup() {
   Serial.begin(9600);
@@ -54,6 +72,14 @@ void loop() {
     digitalWrite(ledBPin, HIGH);
     playTune(smokeOnWater, smokeOnWaterLen);
     digitalWrite(ledBPin, LOW);
+  }
+
+  else if (digitalRead(switchCPin) == HIGH) {
+    noteDur = noteDur/2;
+    digitalWrite(ledCPin, HIGH);
+    playTune(thousandMiles, thousandMilesLen);
+    digitalWrite(ledCPin, LOW);
+    noteDur = noteDur*2;
   }
 }
 
