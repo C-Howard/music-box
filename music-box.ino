@@ -26,7 +26,12 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  if (switchAPin == HIGH) {
+    digitalWrite(ledAPin, HIGH);
+    playTune(happyBirthday(), 50);
+    digitalWrite(ledAPin, LOW);
+    noTone(soundPin);
+  }
 }
 
 //  Plays song contained within tune.
