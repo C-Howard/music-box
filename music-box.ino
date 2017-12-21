@@ -27,5 +27,24 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
 }
+
+//  Plays song contained within tune.
+//    tune : long array containing encoded song
+//    len : length of tune array
+void playTune(long tune[], int len) {
+  for (int i = 0; i < len; i += 2) {
+    int freq = int(tune[i]);
+    long dur = tune[i+1]*noteDur;
+    tone(soundPin, freq, dur);
+    delay(dur);
+  }
+}
+
+
+
+
+
+
+
+
