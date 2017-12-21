@@ -13,6 +13,13 @@ const int soundPin = 13;
 
 int noteDur = 500; // ms per 1 beat
 
+long happyBirthday[50] = { 146.83, 0.75, 146.83, 0.25, 
+164.81, 1, 146.83, 1, 196.00, 1, 174.61, 2, 146.83, 0.75, 
+146.83, 0.25, 164.81, 1, 146.83, 1, 220.00, 1, 196.00, 2, 
+146.83, 0.75, 146.83, 0.25, 293.66, 1, 246.94, 1, 196.00, 
+1, 174.61, 1, 164.81, 1, 261.63, 0.75, 261.63, 0.25, 
+246.94, 1, 196.00, 1, 220.00, 1, 196.00, 3};
+
 void setup() {
   pinMode(switchAPin, INPUT);
   pinMode(switchBPin, INPUT);
@@ -28,7 +35,7 @@ void setup() {
 void loop() {
   if (digitalRead(switchAPin) == HIGH) {
     digitalWrite(ledAPin, HIGH);
-    playTune(happyBirthday(), 50);
+    playTune(happyBirthday, 50);
     digitalWrite(ledAPin, LOW);
   }
 }
@@ -45,40 +52,4 @@ void playTune(long tune[], int len) {
   }
   noTone(soundPin);
 }
-
-// Returns array containing happy birthday, encoded.
-long happyBirthday() {
-  long hbd[50] = {
-    146.83, 0.75,   // D
-    146.83, 0.25,   // D
-    164.81, 1,      // E
-    146.83, 1,      // D
-    196.00, 1,      // G
-    174.61, 2,      // F
-
-    146.83, 0.75,   // D
-    146.83, 0.25,   // D
-    164.81, 1,      // E
-    146.83, 1,      // D
-    220.00, 1,      // A
-    196.00, 2,      // G
-
-    146.83, 0.75,   // D
-    146.83, 0.25,   // D
-    293.66, 1,      // D
-    246.94, 1,      // B
-    196.00, 1,      // G
-    174.61, 1,      // F
-    164.81, 1,      // E
-
-    261.63, 0.75,   // C
-    261.63, 0.25,   // C
-    246.94, 1,      // B
-    196.00, 1,      // G
-    220.00, 1,      // A
-    196.00, 3       // G
-  };
-  return hbd;
-}
-
 
